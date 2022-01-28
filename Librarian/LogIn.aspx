@@ -14,17 +14,20 @@
         </nav>
         <div class="flex items-center justify-center h-screen -mt-20">
           <div class="w-full p-8 lg:w-1/2 ">
+            <div runat="server" id="loginMessageDiv" visible="false" class="bg-red-100 border border-red-400 text-red-700 p-4 rounded" role="alert">
+                <p class="text-center text-m">Please check your email and password</p>
+            </div>
             <div class="mt-4">
               <label class="block text-black text-sm font-bold mb-2">Email</label>
                 <asp:TextBox ID="EmailTxt" runat="server" class="bg-custom-lightgray text-black focus:outline-none focus:shadow-outline border rounded py-2 px-4 block w-full appearance-none" type="email" MaxLength="100" />
-                <asp:RequiredFieldValidator ErrorMessage="Please enter your Email" CssClass="text-red" ControlToValidate="EmailTxt" runat="server" Display="Dynamic" />
+                <asp:RequiredFieldValidator ErrorMessage="Please enter your Email" CssClass="text-custom-red" ControlToValidate="EmailTxt" runat="server" Display="Dynamic" />
             </div>
             <div class="mt-4">
               <div class="flex justify-between">
                 <label class="block text-black text-sm font-bold mb-2">Password</label>
               </div>
               <asp:TextBox ID="PasswordTxt" runat="server" class="bg-custom-lightgray  text-black focus:outline-none focus:shadow-outline border rounded py-2 px-4 block w-full appearance-none" type="password" MaxLength="100" />
-              <asp:RequiredFieldValidator ErrorMessage="Please enter your password" CssClass="text-red" ControlToValidate="PasswordTxt" runat="server" Display="Dynamic" />
+              <asp:RequiredFieldValidator ErrorMessage="Please enter your password" CssClass="text-custom-red" ControlToValidate="PasswordTxt" runat="server" Display="Dynamic" />
 
             </div>
             <div class="mt-8">
