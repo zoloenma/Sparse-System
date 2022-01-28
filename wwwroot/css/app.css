@@ -582,6 +582,9 @@ video {
 .absolute {
 	position: absolute;
 }
+.-mt-20 {
+	margin-top: -5rem;
+}
 .mt-3 {
 	margin-top: 0.75rem;
 }
@@ -678,12 +681,6 @@ video {
 .p-3 {
 	padding: 0.75rem;
 }
-.p-12 {
-	padding: 3rem;
-}
-.p-10 {
-	padding: 2.5rem;
-}
 .p-8 {
 	padding: 2rem;
 }
@@ -746,6 +743,10 @@ video {
 .text-blue-500 {
 	--tw-text-opacity: 1;
 	color: rgba(59, 130, 246, var(--tw-text-opacity));
+}
+.text-red {
+	--tw-text-opacity: 1;
+	color: rgba(231, 65, 65, var(--tw-text-opacity));
 }
 .hover\:bg-gray-600:hover {
 	--tw-bg-opacity: 1;
