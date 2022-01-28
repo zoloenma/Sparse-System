@@ -6,7 +6,13 @@
     ],
     darkMode: false,
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'ashblue': '#657A8C',
+                'lightgray': '#F2F2F2',
+                'orange':'#E4984E',
+            }
+        },
     },
     variants: {
         extend: {},
