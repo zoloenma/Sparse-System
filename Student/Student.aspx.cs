@@ -11,14 +11,15 @@ namespace Sparse.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //gettimedatabase
-            DateTime time = new DateTime(2015, 12, 31, 11, 10, 20); //dummy
+            //DateTime time = DateTime.Now; 
+            DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
-                //getpercentdatabase
-                double percent = 120; //dummy
+                DatabaseOperations occupancy = new DatabaseOperations();
+                int percentInt = occupancy.GetCurrentRoomOccupancy();
+                double percent = Convert.ToDouble(percentInt);
+                //double percent = 70; //dummy
                 percentage.Text = percent.ToString() + "%";
                 if (percent > 100)
                 {

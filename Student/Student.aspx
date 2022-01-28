@@ -14,16 +14,16 @@
             <span class="text-xl text-white font-thin tracking-wide">Sparse</span>
         </nav>
         
-        <div class="min-h-screen p-6 flex items-center justify-center">
+        <div class="h-auto mt-10 p-6 flex items-center justify-center">
             <div class="container max-w-screen-lg mx-auto">
                 <div>
                     <div class="bg-custom-lightgray rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-5">
                             <div class="lg:col-span-3">
-                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 pt-3">
                                     <div class="md:col-span-5 text-center">
                                         <div>
-                                            <p class="md:text-5xl text-lg mt-3 text-black pt-3">Malayan Colleges Laguna</p>
+                                            <p class="md:text-5xl text-lg mt-3 text-black pt-6">Malayan Colleges Laguna</p>
                                         </div>
                                     </div>
                                     <div class="md:col-span-5 text-center">
