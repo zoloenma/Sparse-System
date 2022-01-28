@@ -11,13 +11,14 @@ namespace Sparse.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //gettimedatabase
-            DateTime time = new DateTime(2015, 12, 31, 22, 10, 20); //dummy
+            DateTime time = new DateTime(2015, 12, 31, 11, 10, 20); //dummy
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
                 //getpercentdatabase
-                double percent = 20; //dummy
+                double percent = 120; //dummy
                 percentage.Text = percent.ToString() + "%";
                 if (percent > 100)
                 {
@@ -38,27 +39,27 @@ namespace Sparse.Student
                 if (percent == 0)
                 {
                     RoomStatus.Text = "EMPTY";
-                    statusColor = "bg-green";
+                    statusColor = "bg-custom-green";
                 }
                 else if (percent >= 1 & percent <= 30)
                 {
                     RoomStatus.Text = "NOT BUSY";
-                    statusColor = "bg-lightgreen";
+                    statusColor = "bg-custom-lightgreen";
                 }
                 else if (percent >= 31 & percent <= 70)
                 {
                     RoomStatus.Text = "NORMAL";
-                    statusColor = "bg-yellow";
+                    statusColor = "bg-custom-yellow";
                 }
                 else if (percent >= 71 & percent <= 99)
                 {
                     RoomStatus.Text = "BUSY";
-                    statusColor = "bg-orange";
+                    statusColor = "bg-custom-orange";
                 }
                 else if (percent >= 100)
                 {
                     RoomStatus.Text = "FULL";
-                    statusColor = "bg-red";
+                    statusColor = "bg-custom-red";
                 }
 
                 string statusCss = "inline-flex " + statusColor + " text-black rounded-full h-24 w-40 md:text-3xl justify-center items-center";
@@ -67,7 +68,7 @@ namespace Sparse.Student
             else
             {
                 RoomStatus.Text = "CLOSED";
-                RoomStatus.Attributes.Add("class", "inline-flex bg-darkgray text-black rounded-full h-24 w-40 md:text-3xl justify-center items-center");
+                RoomStatus.Attributes.Add("class", "inline-flex bg-custom-darkgray text-black rounded-full h-24 w-40 md:text-3xl justify-center items-center");
                 circlePercentage.Style["stroke"] = "darkgray";
             }
         }

@@ -33,6 +33,15 @@ namespace Sparse.Student
         protected global::System.Web.UI.WebControls.Label RoomStatus;
 
         /// <summary>
+        /// firstCircle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl firstCircle;
+
+        /// <summary>
         /// circlePercentage control.
         /// </summary>
         /// <remarks>

@@ -10,14 +10,14 @@
 <body>
     <form id="form1" runat="server">
 
-        <nav class="flex items-center bg-ashblue p-3 flex-wrap">
+        <nav class="flex items-center bg-custom-ashblue p-3 flex-wrap">
             <span class="text-xl text-white font-thin tracking-wide">Sparse</span>
         </nav>
         
         <div class="min-h-screen p-6 flex items-center justify-center">
             <div class="container max-w-screen-lg mx-auto">
                 <div>
-                    <div class="bg-lightgray rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                    <div class="bg-custom-lightgray rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-5">
                             <div class="lg:col-span-3">
                                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
@@ -48,7 +48,7 @@
                                         <div>
                                             <div class="inner w-full h-full flex items-center justify-center py-8">
                                                 <svg class="transform -rotate-90 w-72 h-72">
-                                                    <circle cx="145" cy="145" r="120" stroke="darkgray" stroke-width="30" fill="transparent"  />
+                                                    <circle id="firstCircle" runat="server" cx="145" cy="145" r="120" stroke="darkgray" stroke-width="30" fill="transparent"  />
                                                     <circle id="circlePercentage" runat="server" cx="145" cy="145" r="120" stroke="darkblue" stroke-width="30" fill="transparent" />
                                                 </svg>
                                                 <asp:Label id="percentage" runat="server" class="absolute text-5xl"></asp:Label>
