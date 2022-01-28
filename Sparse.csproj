@@ -77,6 +77,7 @@
     <Content Include="wwwroot\css\app.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseOperations.cs" />
     <Compile Include="Librarian\Librarian.aspx.cs">
       <DependentUpon>Librarian.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -124,7 +125,7 @@
   </Target>
   <Target Name="BuildCSS" BeforeTargets="Compile">
     <Exec Command="npm run buildcss:dev" Condition=" '$(Configuration)' == 'Debug' " />
-	<Exec Command="npm run buildcss:release" Condition=" '$(Configuration)' == 'Release' " /> 
+    <Exec Command="npm run buildcss:release" Condition=" '$(Configuration)' == 'Release' " />
   </Target>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
