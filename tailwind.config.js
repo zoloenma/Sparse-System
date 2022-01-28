@@ -3,6 +3,7 @@
     purge: [
         './Student/*.aspx',
         './Librarian/*.aspx',
+        './Student/*.aspx.cs',
     ],
     darkMode: false,
     theme: {

@@ -9,44 +9,59 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
         <nav class="flex items-center bg-ashblue p-3 flex-wrap">
             <span class="text-xl text-white font-thin tracking-wide">Sparse</span>
         </nav>
-        <div class="flex items-center justify-center h-screen p-12">
-          <div class="w-full h-full bg-lightgray p-10 rounded-md">
-            <div class="flex flex-col lg:flex-row h-full w-full">
-              <div class="h-full w-full lg:flex-1">
-                <div class="w-full h-full flex items-center text-center">
-                  <div class="outer">
-                    <div class="inner"><p class="md:text-5xl text-lg mt-3 text-black-800">Malayan Colleges Laguna</p></div>
-                    <div class="inner"><p class="md:text-5xl text-lg mt-3 text-black-800 py-6">Center of Learning and Information Resources</p></div>
-                    <div class="inner">
-                      <p class="md:text-5xl text-lg mt-3 text-black-800">Opens: 7:00 AM <br />and <br />Closes: 8:00PM</p>
+        
+        <div class="min-h-screen p-6 flex items-center justify-center">
+            <div class="container max-w-screen-lg mx-auto">
+                <div>
+                    <div class="bg-lightgray rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-5">
+                            <div class="lg:col-span-3">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                    <div class="md:col-span-5 text-center">
+                                        <div>
+                                            <p class="md:text-5xl text-lg mt-3 text-black pt-3">Malayan Colleges Laguna</p>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-5 text-center">
+                                        <div>
+                                            <p class="md:text-4xl text-lg mt-3 text-black py-6">Center of Learning and Information Resources</p>
+                                        </div>
+                                    </div>
+                                    <div class="md:col-span-1"></div>
+                                    <div class="md:col-span-3 text-center">
+                                        <div>
+                                            <p class="md:text-4xl text-lg mt-3 text-black pb-3">Opens: 7:00 AM <br/>and <br/>Closes: 8:00PM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                    <div class="md:col-span-5 text-center pt-7">
+                                        <asp:Label ID="RoomStatus" runat="server"></asp:Label>
+                                    </div>
+                                    <div class="md:col-span-5 text-center">
+                                        <div>
+                                            <div class="inner w-full h-full flex items-center justify-center py-8">
+                                                <svg class="transform -rotate-90 w-72 h-72">
+                                                    <circle cx="145" cy="145" r="120" stroke="darkgray" stroke-width="30" fill="transparent"  />
+                                                    <circle id="circlePercentage" runat="server" cx="145" cy="145" r="120" stroke="darkblue" stroke-width="30" fill="transparent" />
+                                                </svg>
+                                                <asp:Label id="percentage" runat="server" class="absolute text-5xl"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="h-full w-full lg:flex-1">
-                <div class="w-full h-full flex items-center justify-center">
-                  <div class="outer">
-                    <div class="inner  w-full h-full flex items-center justify-center">
-                      <span class="inline-flex bg-orange text-black rounded-full h-24 w-36 md:text-3xl justify-center items-center">BUSY</span>
-                    </div>
-                    <div class="inner w-full h-full flex items-center justify-center py-8">
-                      <svg class="transform -rotate-90 w-72 h-72">
-                        <circle cx="145" cy="145" r="120" stroke="currentColor" stroke-width="30" fill="transparent" class="text-gray-700" />
-                        <circle cx="145" cy="145" r="120" stroke="currentColor" stroke-width="30" fill="transparent" class="text-blue-500" stroke-dasharray="754.285714286" stroke-dashoffset="377.142857143" />
-                      </svg>
-                      <span class="absolute text-5xl">50%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-
-
     </form>
 </body>
 </html>
