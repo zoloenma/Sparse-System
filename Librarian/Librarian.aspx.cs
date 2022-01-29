@@ -12,9 +12,27 @@ namespace Sparse.Librarian
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ShowData();
+        }
+
+        public void ShowData()
+        {
             DatabaseOperations databaseOperations = new DatabaseOperations();
+
             string occupancy = databaseOperations.GetCurrentRoomOccupancy().ToString();
-            CurrentRoomOccupancy.Text = occupancy;
+            CurrentRoomOccupancyLbl.Text = occupancy + "%";
+
+            string status = databaseOperations.GetCurrentStatus();
+            RoomStatusLbl.Text = status;
+
+            string statusColor = "bg-" + databaseOperations.GetCurrentStatusColor();
+            RoomStatusLbl.Attributes.Add("class", statusColor + " px-6 py-2 rounded-full ml-4 text-2xl");
+
+            string capacity = databaseOperations.GetEffectiveCapacity().ToString();
+            EffectiveCapacityLbl.Text = capacity;
+
+            //dummy email
+            emailLbl.Text = "librarian@mcl.edu.ph";
         }
     }
 }

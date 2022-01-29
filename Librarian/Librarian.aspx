@@ -14,7 +14,9 @@
             <nav class="flex items-center bg-custom-ashblue h-16 px-6 flex-wrap justify-between">
                 <span class="text-2xl text-white font-thin tracking-wide">Sparse</span>
                 <div class="flex flex-row">
-                    <p class="text-white">librarian@mcl.edu.ph</p>
+                    <p class="text-white">
+                        <asp:Label ID="emailLbl" runat="server" Text=""></asp:Label>
+                    </p>
                     <div class="flex flex-row ml-2 items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -37,19 +39,19 @@
                     <div class="bg-custom-lightgray border border-custom-darkblue px-12 py-6 rounded mt-9 flex flex-col sm:flex-row justify-between">
                         <div class="flex flex-col">
                             <p class="text-center sm:text-left">Current Room Occupancy:</p>
-                            <div class="flex flex-row items-end justify-center sm:justify-start mt-3">
+                            <div class="flex flex-row items-center justify-center sm:justify-start mt-3">
                                 <p class="text-3xl">
-                                    <b><asp:Label ID="CurrentRoomOccupancy" runat="server" Text=""></asp:Label>%</b>
+                                    <b><asp:Label ID="CurrentRoomOccupancyLbl" runat="server" Text=""></asp:Label></b>
                                 </p>
-                                <div class="bg-custom-red px-6 py-1 rounded-full ml-4">
-                                    <p class="text-2xl">FULL</p>
-                                </div>
+                                <asp:Label ID="RoomStatusLbl" runat="server" Text=""></asp:Label>
                             </div>
                         </div>
                         <div class="flex flex-col mt-8 sm:mt-0">
                             <p class="text-center sm:text-left">Effective Capacity:</p>
                             <div class="flex flex-row items-center justify-center sm:justify-start mt-3">
-                                <p class="text-3xl">100</p>
+                                <p class="text-3xl">
+                                    <asp:Label ID="EffectiveCapacityLbl" runat="server" Text=""></asp:Label>
+                                </p>
                                 <div class="ml-4 text-sm underline text-custom-ashblue">
                                     <asp:LinkButton ID="ChangeCapacity" runat="server">Change</asp:LinkButton>
                                 </div>

@@ -24,13 +24,40 @@ namespace Sparse.Librarian
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// CurrentRoomOccupancy control.
+        /// emailLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentRoomOccupancy;
+        protected global::System.Web.UI.WebControls.Label emailLbl;
+
+        /// <summary>
+        /// CurrentRoomOccupancyLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentRoomOccupancyLbl;
+
+        /// <summary>
+        /// RoomStatusLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RoomStatusLbl;
+
+        /// <summary>
+        /// EffectiveCapacityLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EffectiveCapacityLbl;
 
         /// <summary>
         /// ChangeCapacity control.
