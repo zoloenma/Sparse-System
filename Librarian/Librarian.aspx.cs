@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Sparse.Database;
 
 namespace Sparse.Librarian
 {
@@ -11,7 +12,9 @@ namespace Sparse.Librarian
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            DatabaseOperations databaseOperations = new DatabaseOperations();
+            string occupancy = databaseOperations.GetCurrentRoomOccupancy().ToString();
+            CurrentRoomOccupancy.Text = occupancy;
         }
     }
 }

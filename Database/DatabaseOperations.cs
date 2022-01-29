@@ -16,23 +16,24 @@ namespace Sparse.Database
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("update EffectiveRoomOccupancy set [Room Occupancy] = " + newEffectiveCapacity.ToString(), con);
+                SqlCommand cmd = new SqlCommand("update EffectiveCapacity set Capacity = " + newEffectiveCapacity.ToString(), con);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public int GetCurrentRoomOccupancy()
+        public float GetCurrentRoomOccupancy()
         {
-            int roomOccupancy = 0;
+            float roomOccupancy = 0;
 
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 con.Open();
 
                 SqlCommand cmd = new SqlCommand("select [Room Occupancy] from RoomOccupancy where ID=(select max(ID) from RoomOccupancy)", con);
-                roomOccupancy = int.Parse(cmd.ExecuteScalar().ToString());
+                roomOccupancy = float.Parse(cmd.ExecuteScalar().ToString());
             }
 
+            roomOccupancy = roomOccupancy * 100;
             return roomOccupancy;
         }
     }

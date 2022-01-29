@@ -23,7 +23,9 @@
                         <div class="flex flex-col">
                             <p class="text-center sm:text-left">Current Room Occupancy:</p>
                             <div class="flex flex-row items-end justify-center sm:justify-start mt-3">
-                                <p class="text-3xl"><b>100%</b></p>
+                                <p class="text-3xl">
+                                    <b><asp:Label ID="CurrentRoomOccupancy" runat="server" Text=""></asp:Label>%</b>
+                                </p>
                                 <div class="bg-custom-red px-6 py-1 rounded-full ml-4">
                                     <p class="text-2xl">FULL</p>
                                 </div>

@@ -17,7 +17,7 @@ namespace Sparse.Student
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
                 DatabaseOperations occupancy = new DatabaseOperations();
-                int percentInt = occupancy.GetCurrentRoomOccupancy();
+                float percentInt = occupancy.GetCurrentRoomOccupancy();
                 double percent = Convert.ToDouble(percentInt);
                 //double percent = 70; //dummy
                 percentage.Text = percent.ToString() + "%";
