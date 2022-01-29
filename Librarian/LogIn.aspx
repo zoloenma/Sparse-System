@@ -9,9 +9,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="flex items-center bg-custom-ashblue p-3 flex-wrap">
-            <span class="text-xl text-white font-thin tracking-wide">Sparse</span>
-        </nav>
+        <nav class="flex items-center bg-custom-ashblue h-16 px-6 flex-wrap">
+                <span class="text-2xl text-white font-thin tracking-wide">Sparse</span>
+            </nav>
         <div class="flex items-center justify-center h-screen -mt-20">
           <div class="w-full p-8 lg:w-1/2 ">
             <div runat="server" id="loginMessageDiv" visible="false" class="bg-red-100 border border-red-400 text-red-700 p-4 rounded" role="alert">

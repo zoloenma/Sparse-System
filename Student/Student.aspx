@@ -10,9 +10,9 @@
 <body>
     <form id="form1" runat="server">
 
-        <nav class="flex items-center bg-custom-ashblue p-3 flex-wrap">
-            <span class="text-xl text-white font-thin tracking-wide">Sparse</span>
-        </nav>
+        <nav class="flex items-center bg-custom-ashblue h-16 px-6 flex-wrap">
+                <span class="text-2xl text-white font-thin tracking-wide">Sparse</span>
+            </nav>
         
         <div class="h-auto mt-10 p-6 flex items-center justify-center">
             <div class="container max-w-screen-lg mx-auto">

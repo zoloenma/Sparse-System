@@ -10,16 +10,31 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <nav class="flex items-center bg-custom-ashblue h-16 pl-5 flex-wrap">
+            <!-- Navbar -->
+            <nav class="flex items-center bg-custom-ashblue h-16 px-6 flex-wrap justify-between">
                 <span class="text-2xl text-white font-thin tracking-wide">Sparse</span>
+                <div class="flex flex-row">
+                    <p class="text-white">librarian@mcl.edu.ph</p>
+                    <div class="flex flex-row ml-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
             </nav>
+
             <div>
-                <div class="container mx-auto my-14">
+                <div class="container mx-auto my-14 text-custom-black">
+                    <!-- Warning -->
                     <div class="bg-red-100 border border-red-400 text-red-700 p-4 rounded" role="alert">
                         <p class="text-center text-xl"><b>Warning:</b> Effective Capacity Exceeded</p>
                     </div>
 
-                    <div class="bg-custom-lightgray border border-custom-darkblue text-custom-black px-12 py-6 rounded mt-9 flex flex-col sm:flex-row justify-between">
+                    <!-- Room Occupancy & Effective Capacity -->
+                    <div class="bg-custom-lightgray border border-custom-darkblue px-12 py-6 rounded mt-9 flex flex-col sm:flex-row justify-between">
                         <div class="flex flex-col">
                             <p class="text-center sm:text-left">Current Room Occupancy:</p>
                             <div class="flex flex-row items-end justify-center sm:justify-start mt-3">
@@ -43,9 +58,12 @@
                     </div>
 
                     <div class="flex flex-col lg:flex-row mt-9 gap-5">
+                        <!-- Average Room Occupancy -->
                         <div class="w-full lg:w-3/5 flex-auto bg-custom-lightgray rounded px-12 py-12">
                             <h2 class="text-xl">Average Room Occupancy</h2>
                         </div>
+
+                        <!-- Room Occupancy for the Past Hour -->
                         <div class="w-full lg:w-2/5 flex-auto bg-custom-lightgray rounded px-12 py-12">
                             <h2 class="text-xl">Room Occupancy for the Past Hour</h2>
                             <table class="mt-4 w-full">
