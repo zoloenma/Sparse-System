@@ -100,12 +100,12 @@ namespace Sparse.Database
 
             switch (status)
             {
-                case "EMPTY": statusColor = "custom-green"; break;
-                case "NOT BUSY": statusColor = "custom-lightgreen"; break;
-                case "NORMAL": statusColor = "custom-yellow"; break;
-                case "BUSY": statusColor = "custom-orange"; break;
-                case "FULL": statusColor = "custom-red"; break;
-                case "CLOSED": statusColor = "custom-darkgray"; break;
+                case "EMPTY": statusColor = "bg-custom-green"; break;
+                case "NOT BUSY": statusColor = "bg-custom-lightgreen"; break;
+                case "NORMAL": statusColor = "bg-custom-yellow"; break;
+                case "BUSY": statusColor = "bg-custom-orange"; break;
+                case "FULL": statusColor = "bg-custom-red"; break;
+                case "CLOSED": statusColor = "bg-custom-darkgray"; break;
 
             }
 
