@@ -25,7 +25,7 @@ namespace Sparse.Librarian
             string status = databaseOperations.GetCurrentStatus();
             RoomStatusLbl.Text = status;
 
-            string statusColor = "bg-" + databaseOperations.GetCurrentStatusColor();
+            string statusColor = databaseOperations.GetCurrentStatusColor();
             RoomStatusLbl.Attributes.Add("class", statusColor + " px-6 py-2 rounded-full ml-4 text-2xl");
 
             string capacity = databaseOperations.GetEffectiveCapacity().ToString();

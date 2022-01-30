@@ -42,7 +42,7 @@ namespace Sparse.Student
 
             RoomStatus.Text = databaseOperations.GetCurrentStatus();
 
-            string statusColor = "bg-" + databaseOperations.GetCurrentStatusColor();
+            string statusColor = databaseOperations.GetCurrentStatusColor();
             string statusCss = "inline-flex " + statusColor + " text-black rounded-full h-24 w-40 md:text-3xl justify-center items-center";
             RoomStatus.Attributes.Add("class", statusCss);
         }

@@ -4,6 +4,7 @@
         './Student/*.aspx',
         './Librarian/*.aspx',
         './Student/*.aspx.cs',
+        './Database/DatabaseOperations.cs',
     ],
     darkMode: false,
     theme: {
