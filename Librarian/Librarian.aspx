@@ -8,24 +8,32 @@
 <head runat="server">
     <title></title>
     <link href="../wwwroot/css/app.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <!-- Navbar -->
-            <nav class="flex items-center bg-custom-ashblue h-16 px-6 flex-wrap justify-between">
+            <nav x-data="{ open: false }" class="flex items-center bg-custom-ashblue h-16 px-6 flex-wrap justify-between">
                 <span class="text-2xl text-white font-thin tracking-wide">Sparse</span>
-                <div class="flex flex-row">
-                    <p class="text-white">
-                        <asp:Label ID="emailLbl" runat="server" Text=""></asp:Label>
-                    </p>
-                    <div class="flex flex-row ml-2 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
+                <div>
+                    <button type="button" @click="open = !open" class="flex flex-row">
+                        <p class="text-white">
+                            <asp:Label ID="emailLbl" runat="server" Text=""></asp:Label>
+                        </p>
+                        <div class="flex flex-row ml-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                    </button>
+                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded shadow-lg sm:w-48">
+                      <div class="px-2 py-2 bg-white rounded shadow">
+                          <asp:Button ID="LogoutBtn" runat="server" Text="Logout" CssClass="block px-4 py-2 mt-2 bg-transparent rounded hover:bg-custom-lightgray w-full text-left" OnClick="LogoutBtn_Click" />
+                      </div>
                     </div>
                 </div>
             </nav>
@@ -33,7 +41,7 @@
             <div>
                 <div class="container mx-auto my-14 text-custom-black">
                     <!-- Warning -->
-                    <div class="bg-red-100 border border-red-400 text-red-700 p-4 rounded" role="alert">
+                    <div id="WarningAlert" runat="server" class="bg-red-100 border border-red-400 text-red-700 p-4 rounded" role="alert">
                         <p class="text-center text-xl"><b>Warning:</b> Effective Capacity Exceeded</p>
                     </div>
 
@@ -75,22 +83,26 @@
                                     <tr class="h-10">
                                         <th>Time</th>
                                         <th>Occupancy</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="h-10 border-b border-custom-darkgray text-center">
-                                        <td>11:50 AM</td>
-                                        <td>80%</td>
-                                        <td>[bar]</td>
-                                    </tr>
-                                    <asp:Repeater ID="Repeater1" runat="server">
+                                    <asp:GridView ID="HistoryTable1" runat="server"></asp:GridView>
+                                    <asp:Repeater ID="HistoryTable" runat="server">
                                         <ItemTemplate>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
+                                            <tr class="h-10 border-b border-custom-darkgray text-center">
+                                                <td><%#DataBinder.Eval(Container,"DataItem.Time", "{0:hh:mm tt}")%></td>
+                                                <td>
+                                                    <%#String.Format("{0}%", (Convert.ToDouble(DataBinder.Eval(Container,"DataItem.Occupancy")) * 100).ToString("0.##")) %>
+                                                </td>
+                                                <!-- bar
+                                                <td class="flex flex-row">
+                                                    
+                                                    <div class="w-full bg-custom-darkgray h-5 ml-2 rounded-full">
+                                                      <div class="bg-custom-darkblue h-5 rounded-full" style="width: 99%"></div>
+                                                    </div>
+                                                </td>
+                                                    -->
+                                            </tr>                                            
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </tbody>

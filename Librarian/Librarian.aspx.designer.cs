@@ -33,6 +33,24 @@ namespace Sparse.Librarian
         protected global::System.Web.UI.WebControls.Label emailLbl;
 
         /// <summary>
+        /// LogoutBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LogoutBtn;
+
+        /// <summary>
+        /// WarningAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WarningAlert;
+
+        /// <summary>
         /// CurrentRoomOccupancyLbl control.
         /// </summary>
         /// <remarks>
@@ -69,13 +87,22 @@ namespace Sparse.Librarian
         protected global::System.Web.UI.WebControls.LinkButton ChangeCapacity;
 
         /// <summary>
-        /// Repeater1 control.
+        /// HistoryTable1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.GridView HistoryTable1;
+
+        /// <summary>
+        /// HistoryTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater HistoryTable;
 
         /// <summary>
         /// ToolkitScriptManager1 control.

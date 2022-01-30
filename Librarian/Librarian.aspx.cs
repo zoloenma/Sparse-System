@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Sparse.Database;
+using System.Data.SqlClient; //remove
 
 namespace Sparse.Librarian
 {
@@ -19,8 +20,18 @@ namespace Sparse.Librarian
         {
             DatabaseOperations databaseOperations = new DatabaseOperations();
 
-            float occupancy = databaseOperations.GetCurrentRoomOccupancy();
-            CurrentRoomOccupancyLbl.Text = occupancy.ToString("0.##") + "%";
+            WarningAlert.Visible = false;
+
+            //DateTime time = DateTime.Now;
+            DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
+
+            if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
+            {
+                float occupancy = databaseOperations.GetCurrentRoomOccupancy();
+                CurrentRoomOccupancyLbl.Text = occupancy.ToString() + "%";
+
+                if (occupancy > 100) WarningAlert.Visible = true;
+            }
 
             string status = databaseOperations.GetCurrentStatus();
             RoomStatusLbl.Text = status;
@@ -30,6 +41,10 @@ namespace Sparse.Librarian
 
             string capacity = databaseOperations.GetEffectiveCapacity().ToString();
             EffectiveCapacityLbl.Text = capacity;
+
+            //HistoryTable.DataSource = databaseOperations.GetHistoryforPastHour();
+            //HistoryTable.DataBind();
+            GetHistory();
 
             //dummy email
             emailLbl.Text = "librarian@mcl.edu.ph";
@@ -44,6 +59,23 @@ namespace Sparse.Librarian
             databaseOperations.UpdateEffectiveCapacity(capacity);
 
             EffectiveCapacityLbl.Text = capacity.ToString();
+        }
+
+        protected void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Librarian/LogIn.aspx");
+        }
+
+        public void GetHistory()
+        {
+            using (SqlConnection con = new SqlConnection("Server=tcp:***REMOVED***,1433;Initial Catalog=sparse;User ID=***REMOVED***;Password=***REMOVED***"))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("select [Room Occupancy] as Occupancy, [Timestamp] as [Time] from RoomOccupancy where [Timestamp] >= DATEADD(HOUR, -1, GETDATE())", con);
+                HistoryTable.DataSource = cmd.ExecuteReader();
+                HistoryTable.DataBind();
+            }
         }
     }
 }

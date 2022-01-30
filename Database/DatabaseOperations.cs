@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Sparse.Database
 {
@@ -49,6 +50,7 @@ namespace Sparse.Database
             }
 
             roomOccupancy = roomOccupancy * 100;
+            roomOccupancy = (float)Math.Round(roomOccupancy * 100f) / 100f; //round off to 2 decimal places
             return roomOccupancy;
         }
 
