@@ -975,6 +975,14 @@ video {
 	--tw-text-opacity: 1;
 	color: rgba(0, 0, 0, var(--tw-text-opacity));
 }
+.text-custom-darkgray{
+	--tw-text-opacity: 1;
+	color: rgba(166, 166, 166, var(--tw-text-opacity));
+}
+.text-custom-darkblue{
+	--tw-text-opacity: 1;
+	color: rgba(2, 40, 89, var(--tw-text-opacity));
+}
 .text-custom-black{
 	--tw-text-opacity: 1;
 	color: rgba(13, 13, 13, var(--tw-text-opacity));

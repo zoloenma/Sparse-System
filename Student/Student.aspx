@@ -48,8 +48,8 @@
                                         <div>
                                             <div class="inner w-full h-full flex items-center justify-center py-8">
                                                 <svg class="transform -rotate-90 w-72 h-72">
-                                                    <circle id="firstCircle" runat="server" cx="145" cy="145" r="120" stroke="darkgray" stroke-width="30" fill="transparent"  />
-                                                    <circle id="circlePercentage" runat="server" cx="145" cy="145" r="120" stroke="darkblue" stroke-width="30" fill="transparent" />
+                                                    <circle id="firstCircle" runat="server" cx="145" cy="145" r="120" class="text-custom-darkgray" stroke="currentColor" stroke-linecap="round" stroke-width="30" fill="transparent"  />
+                                                    <circle id="circlePercentage" runat="server" cx="145" cy="145" r="120" stroke="currentColor" class="text-custom-darkblue" stroke-linecap="round" stroke-width="30" fill="transparent" />
                                                 </svg>
                                                 <asp:Label id="percentage" runat="server" class="absolute text-5xl"></asp:Label>
                                             </div>

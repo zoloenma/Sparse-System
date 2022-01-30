@@ -11,6 +11,7 @@ namespace Sparse.Student
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             DatabaseOperations databaseOperations = new DatabaseOperations();
 
             //DateTime time = DateTime.Now; 
@@ -20,7 +21,7 @@ namespace Sparse.Student
             {
                 float percent = databaseOperations.GetCurrentRoomOccupancy();
                 //float percent = 0; //dummy
-                percentage.Text = percent.ToString() + "%";
+                percentage.Text = percent.ToString("n2") + "% ";
                 if (percent > 100)
                 {
                     circlePercentage.Style["stroke-dasharray"] = "754.285714286";
@@ -32,13 +33,9 @@ namespace Sparse.Student
                     double circumferencePercentage = circumference - percent / 100 * circumference;
                     circlePercentage.Style["stroke-dasharray"] = circumference.ToString();
                     circlePercentage.Style["stroke-dashoffset"] = circumferencePercentage.ToString();
-
                 }
             }
-            else
-            {
-                circlePercentage.Style["stroke"] = "darkgray";
-            }
+            else circlePercentage.Attributes.Add("class", "text-custom-darkgray");
 
             RoomStatus.Text = databaseOperations.GetCurrentStatus();
 
