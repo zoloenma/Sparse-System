@@ -16,15 +16,14 @@ namespace Sparse.Librarian
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) { return; }
-            
-            if (EmailTxt.Text == "a@a" & PasswordTxt.Text =="b") //dummy
-            {
-                Response.Redirect("~/Librarian/Librarian.aspx");
-            }
-            else
-            {
-                loginMessageDiv.Visible = true;
-            }
+            bool result = AuthenticateUser(EmailTxt.Text, PasswordTxt.Text);
+            if (result == true) Response.Redirect("~/Librarian/Librarian.aspx");
+            else loginMessageDiv.Visible = true;
+        }
+        public bool AuthenticateUser(string email, string password)
+        {
+            if (email == "lib@email.com" & password == "asd") return true;//dummy
+            else return false;
         }
     }
 }
