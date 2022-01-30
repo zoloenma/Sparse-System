@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Librarian.aspx.cs" Inherits="Sparse.Librarian.Librarian" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -61,12 +63,12 @@
 
                     <div class="flex flex-col lg:flex-row mt-9 gap-5">
                         <!-- Average Room Occupancy -->
-                        <div class="w-full lg:w-3/5 flex-auto bg-custom-lightgray rounded px-12 py-12">
+                        <div class="w-full lg:w-3/5 flex-auto bg-custom-lightgray rounded p-12">
                             <h2 class="text-xl">Average Room Occupancy</h2>
                         </div>
 
                         <!-- Room Occupancy for the Past Hour -->
-                        <div class="w-full lg:w-2/5 flex-auto bg-custom-lightgray rounded px-12 py-12">
+                        <div class="w-full lg:w-2/5 flex-auto bg-custom-lightgray rounded p-12">
                             <h2 class="text-xl">Room Occupancy for the Past Hour</h2>
                             <table class="mt-4 w-full">
                                 <thead class="bg-custom-ashblue text-white">
@@ -97,6 +99,24 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Change Capacity Modal -->
+            <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
+            </asp:ScriptManager>
+
+            <asp:Panel ID="ModalPanel" runat="server" CssClass="p-12 relative bg-custom-lightgray border border-custom-darkblue rounded">
+                <div class="flex flex-col">
+                    <p>Enter new Effective Capacity:</p>
+                    <asp:TextBox ID="capacityTB" runat="server" CssClass="border border-custom-ashblue mt-2 rounded"></asp:TextBox>
+                    <div class="flex flex-row justify-between mt-8">
+                        <asp:Button ID="ChangeBtn" runat="server" Text="Change" OnClick="ChangeBtn_Click" CssClass="bg-custom-darkblue rounded text-white font-bold px-4 py-2" />
+                        <asp:Button ID="CancelBtn" runat="server" Text="Cancel" CssClass="bg-custom-darkgray rounded text-white font-bold px-4 py-2" />
+                    </div>
+                </div>
+            </asp:Panel>
+            
+            <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" CancelControlID="CancelBtn" PopupControlID="ModalPanel" TargetControlID="ChangeCapacity" BackgroundCssClass="bg-black opacity-60 z-20">
+            </ajaxToolkit:ModalPopupExtender>
         </div>
     </form>
 </body>

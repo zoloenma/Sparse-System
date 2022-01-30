@@ -8,6 +8,8 @@ namespace Sparse.Database
 {
     public class DatabaseOperations
     {
+        public string ConnectionString = "Server=tcp:***REMOVED***,1433;Initial Catalog=sparse;User ID=***REMOVED***;Password=***REMOVED***";
+
         public int GetEffectiveCapacity()
         {
             int effectiveCapacity = 0;
@@ -23,8 +25,6 @@ namespace Sparse.Database
             return effectiveCapacity;
         }
 
-        public string ConnectionString = "Server=tcp:***REMOVED***,1433;Initial Catalog=sparse;User ID=***REMOVED***;Password=***REMOVED***";
-
         public void UpdateEffectiveCapacity(int newEffectiveCapacity)
         {
             using (SqlConnection con = new SqlConnection(ConnectionString))
@@ -39,7 +39,7 @@ namespace Sparse.Database
         public float GetCurrentRoomOccupancy()
         {
             float roomOccupancy = 0;
-
+            
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 con.Open();

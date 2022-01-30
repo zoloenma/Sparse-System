@@ -19,8 +19,8 @@ namespace Sparse.Librarian
         {
             DatabaseOperations databaseOperations = new DatabaseOperations();
 
-            string occupancy = databaseOperations.GetCurrentRoomOccupancy().ToString();
-            CurrentRoomOccupancyLbl.Text = occupancy + "%";
+            float occupancy = databaseOperations.GetCurrentRoomOccupancy();
+            CurrentRoomOccupancyLbl.Text = occupancy.ToString("0.##") + "%";
 
             string status = databaseOperations.GetCurrentStatus();
             RoomStatusLbl.Text = status;
@@ -33,6 +33,17 @@ namespace Sparse.Librarian
 
             //dummy email
             emailLbl.Text = "librarian@mcl.edu.ph";
+        }
+
+        protected void ChangeBtn_Click(object sender, EventArgs e)
+        {
+            int capacity = int.Parse(capacityTB.Text);
+
+            DatabaseOperations databaseOperations = new DatabaseOperations();
+
+            databaseOperations.UpdateEffectiveCapacity(capacity);
+
+            EffectiveCapacityLbl.Text = capacity.ToString();
         }
     }
 }
