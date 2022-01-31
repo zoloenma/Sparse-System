@@ -16,8 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.5.1
+      
 
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v1.0.2
@@ -28,7 +27,11 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore
       
-      - name: install NPM packages
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: '14'
+          cache: 'npm'
       - run: npm install
       
       - name: Publish to folder
