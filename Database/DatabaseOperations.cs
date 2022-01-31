@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace Sparse.Database
 {
     public class DatabaseOperations
     {
-        public string ConnectionString = "Server=tcp:***REMOVED***,1433;Initial Catalog=sparse;User ID=***REMOVED***;Password=***REMOVED***";
+        public string ConnectionString = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
 
         public int GetEffectiveCapacity()
         {

@@ -670,6 +670,9 @@ video {
 .mt-4{
 	margin-top: 1rem;
 }
+.mt-6{
+	margin-top: 1.5rem;
+}
 .-mt-20{
 	margin-top: -5rem;
 }
@@ -796,6 +799,11 @@ video {
 }
 .gap-y-2{
 	row-gap: 0.5rem;
+}
+.space-x-6 > :not([hidden]) ~ :not([hidden]){
+	--tw-space-x-reverse: 0;
+	margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+	margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .rounded{
 	border-radius: 0.25rem;

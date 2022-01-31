@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Librarian.aspx.cs" Inherits="Sparse.Librarian.Librarian" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <!DOCTYPE html>
@@ -32,7 +34,7 @@
                     </button>
                     <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded shadow-lg sm:w-48">
                       <div class="px-2 py-2 bg-white rounded shadow">
-                          <asp:Button ID="LogoutBtn" runat="server" Text="Logout" CssClass="block px-4 py-2 mt-2 bg-transparent rounded hover:bg-custom-lightgray w-full text-left" OnClick="LogoutBtn_Click" />
+                          <asp:Button ID="LogoutBtn" runat="server" Text="Logout" CssClass="block px-4 py-2 bg-transparent rounded hover:bg-custom-lightgray w-full text-left" OnClick="LogoutBtn_Click" />
                       </div>
                     </div>
                 </div>
@@ -73,6 +75,29 @@
                         <!-- Average Room Occupancy -->
                         <div class="w-full lg:w-3/5 flex-auto bg-custom-lightgray rounded p-12">
                             <h2 class="text-xl">Average Room Occupancy</h2>
+                            <div class="mt-4">
+                                <div>
+                                    <ul class="flex flex-row space-x-6 text-custom-ashblue">
+                                        <li><asp:Button ID="monBtn" runat="server" Text="MON" OnClick="monBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                        <li><asp:Button ID="tueBtn" runat="server" Text="TUE" OnClick="tueBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                        <li><asp:Button ID="wedBtn" runat="server" Text="WED" OnClick="wedBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                        <li><asp:Button ID="thuBtn" runat="server" Text="THU" OnClick="thuBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                        <li><asp:Button ID="friBtn" runat="server" Text="FRI" OnClick="friBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                        <li><asp:Button ID="satBtn" runat="server" Text="SAT" OnClick="satBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                    </ul>
+                                </div>
+
+                                <asp:Chart ID="AverageChart" runat="server" Height="250px" Width="500px" CssClass="mt-6">  
+                                    <Series>  
+                                        <asp:Series Name="Series1"  YValuesPerPoint="6">  
+                                        </asp:Series>  
+                                    </Series>  
+                                    <ChartAreas>  
+                                        <asp:ChartArea Name="ChartArea1">  
+                                        </asp:ChartArea>  
+                                    </ChartAreas>  
+                                </asp:Chart>
+                            </div>
                         </div>
 
                         <!-- Room Occupancy for the Past Hour -->
