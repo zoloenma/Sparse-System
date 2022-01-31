@@ -825,6 +825,10 @@ video {
 	--tw-border-opacity: 1;
 	border-color: rgba(2, 40, 89, var(--tw-border-opacity));
 }
+.border-custom-lightgray{
+	--tw-border-opacity: 1;
+	border-color: rgba(242, 242, 242, var(--tw-border-opacity));
+}
 .border-custom-darkgray{
 	--tw-border-opacity: 1;
 	border-color: rgba(166, 166, 166, var(--tw-border-opacity));

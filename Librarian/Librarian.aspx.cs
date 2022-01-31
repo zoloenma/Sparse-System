@@ -106,7 +106,9 @@ namespace Sparse.Librarian
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("select [Room Occupancy]*100 as Occupancy, format([Timestamp], 'hh:mm tt') as Time from RoomOccupancy where [Timestamp] > '2022-01-" + date + " 00:00:00' and [Timestamp] < '2022-01-" + date + " 23:59:59'", con);
+                string query = "select avg(RoomOccupancy) as Occupancy, cast(datepart(hh,[Timestamp]) as varchar) + ':00' as Time from (select [Room Occupancy]*100 as RoomOccupancy, [Timestamp] from RoomOccupancy where [Timestamp] > '2022-01-" + date + " 00:00:00' and [Timestamp] < '2022-01-" + date + " 23:59:59') as data group by datepart(hh,[Timestamp])";
+
+                SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 //cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

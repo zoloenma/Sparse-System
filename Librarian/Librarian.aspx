@@ -78,12 +78,12 @@
                             <div class="mt-4">
                                 <div>
                                     <ul class="flex flex-row space-x-6 text-custom-ashblue">
-                                        <li><asp:Button ID="monBtn" runat="server" Text="MON" OnClick="monBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
-                                        <li><asp:Button ID="tueBtn" runat="server" Text="TUE" OnClick="tueBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
-                                        <li><asp:Button ID="wedBtn" runat="server" Text="WED" OnClick="wedBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
-                                        <li><asp:Button ID="thuBtn" runat="server" Text="THU" OnClick="thuBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
-                                        <li><asp:Button ID="friBtn" runat="server" Text="FRI" OnClick="friBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
-                                        <li><asp:Button ID="satBtn" runat="server" Text="SAT" OnClick="satBtn_Click" CssClass="border py-2 px-4 rounded" /></li>
+                                        <li><asp:Button ID="monBtn" runat="server" Text="MON" OnClick="monBtn_Click" CssClass="border border-custom-lightgray py-2 px-4 rounded bg-transparent" /></li>
+                                        <li><asp:Button ID="tueBtn" runat="server" Text="TUE" OnClick="tueBtn_Click" CssClass="border border-custom-lightgray py-2 px-4 rounded bg-transparent" /></li>
+                                        <li><asp:Button ID="wedBtn" runat="server" Text="WED" OnClick="wedBtn_Click" CssClass="border border-custom-lightgray py-2 px-4 rounded bg-transparent" /></li>
+                                        <li><asp:Button ID="thuBtn" runat="server" Text="THU" OnClick="thuBtn_Click" CssClass="border border-custom-lightgray py-2 px-4 rounded bg-transparent" /></li>
+                                        <li><asp:Button ID="friBtn" runat="server" Text="FRI" OnClick="friBtn_Click" CssClass="border border-custom-lightgray py-2 px-4 rounded bg-transparent" /></li>
+                                        <li><asp:Button ID="satBtn" runat="server" Text="SAT" OnClick="satBtn_Click" CssClass="border border-custom-lightgray py-2 px-4 rounded bg-transparent" /></li>
                                     </ul>
                                 </div>
 
