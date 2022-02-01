@@ -25,15 +25,15 @@ namespace Sparse.Librarian
 
             WarningAlert.Visible = false;
 
-            //DateTime time = DateTime.Now;
-            DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
+            DateTime time = DateTime.Now;
+            //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
                 float occupancy = databaseOperations.GetCurrentRoomOccupancy();
                 CurrentRoomOccupancyLbl.Text = occupancy.ToString() + "%";
 
-                if (occupancy > 100) WarningAlert.Visible = true;
+                if (IsEffectiveCapacityExceeded(occupancy)) WarningAlert.Visible = true;
             }
 
             string status = databaseOperations.GetCurrentStatus();
@@ -49,13 +49,16 @@ namespace Sparse.Librarian
             //HistoryTable.DataBind();
             GetHistory();
 
-            GetChartData("MON");
-            //monBtn.BackColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
-            //monBtn.ForeColor = System.Drawing.Color.White;
+            GetChartData("2");
             monBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
 
             //dummy email
             emailLbl.Text = "librarian@mcl.edu.ph";
+        }
+
+        public bool IsEffectiveCapacityExceeded(float occupancy)
+        {
+            return occupancy > 100;
         }
 
         protected void ChangeBtn_Click(object sender, EventArgs e)
@@ -81,7 +84,7 @@ namespace Sparse.Librarian
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("select [Room Occupancy] as Occupancy, [Timestamp] as [Time] from RoomOccupancy where [Timestamp] >= DATEADD(HOUR, -1, GETDATE())", con);
+                SqlCommand cmd = new SqlCommand("select [Room Occupancy] as Occupancy, [Timestamp] as [Time] from RoomOccupancy where [Timestamp] >= DATEADD(HOUR, -1, GETDATE()) and [Timestamp] <= GETDATE() order by [Timestamp] desc", con);
                 HistoryTable.DataSource = cmd.ExecuteReader();
                 HistoryTable.DataBind();
             }
@@ -90,23 +93,11 @@ namespace Sparse.Librarian
         // will move to DatabaseOperations later
         private void GetChartData(string day)
         {
-            //dummy - will change later
-            string date = "";
-            switch (day)
-            {
-                case "MON": date = "24"; break;
-                case "TUE": date = "25"; break;
-                case "WED": date = "26"; break;
-                case "THU": date = "27"; break;
-                case "FRI": date = "28"; break;
-                case "SAT": date = "29"; break;
-            }
-
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString()))
             {
                 con.Open();
 
-                string query = "select avg(RoomOccupancy) as Occupancy, cast(datepart(hh,[Timestamp]) as varchar) + ':00' as Time from (select [Room Occupancy]*100 as RoomOccupancy, [Timestamp] from RoomOccupancy where [Timestamp] > '2022-01-" + date + " 00:00:00' and [Timestamp] < '2022-01-" + date + " 23:59:59') as data group by datepart(hh,[Timestamp])";
+                string query = "select avg([Room Occupancy]) as Occupancy, cast(datepart(hh,[Timestamp]) as varchar) + ':00' as Time from (select [Room Occupancy]*100 as [Room Occupancy], [Timestamp] from RoomOccupancy where datepart(dw,[Timestamp]) = " + day + ") as data group by datepart(hh,[Timestamp])";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
@@ -141,7 +132,7 @@ namespace Sparse.Librarian
             monBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
             tueBtn.BorderColor = wedBtn.BorderColor = thuBtn.BorderColor = friBtn.BorderColor = satBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#f2f2f2");
 
-            GetChartData("MON");
+            GetChartData("2");
         }
 
         protected void tueBtn_Click(object sender, EventArgs e)
@@ -149,7 +140,7 @@ namespace Sparse.Librarian
             tueBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
             monBtn.BorderColor = wedBtn.BorderColor = thuBtn.BorderColor = friBtn.BorderColor = satBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#f2f2f2");
 
-            GetChartData("TUE");
+            GetChartData("3");
         }
 
         protected void wedBtn_Click(object sender, EventArgs e)
@@ -157,7 +148,7 @@ namespace Sparse.Librarian
             wedBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
             monBtn.BorderColor = tueBtn.BorderColor = thuBtn.BorderColor = friBtn.BorderColor = satBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#f2f2f2");
 
-            GetChartData("WED");
+            GetChartData("4");
         }
 
         protected void thuBtn_Click(object sender, EventArgs e)
@@ -165,7 +156,7 @@ namespace Sparse.Librarian
             thuBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
             monBtn.BorderColor = tueBtn.BorderColor = wedBtn.BorderColor = friBtn.BorderColor = satBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#f2f2f2");
 
-            GetChartData("THU");
+            GetChartData("5");
         }
 
         protected void friBtn_Click(object sender, EventArgs e)
@@ -173,7 +164,7 @@ namespace Sparse.Librarian
             friBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
             monBtn.BorderColor = tueBtn.BorderColor = wedBtn.BorderColor = thuBtn.BorderColor = satBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#f2f2f2");
 
-            GetChartData("FRI");
+            GetChartData("6");
         }
 
         protected void satBtn_Click(object sender, EventArgs e)
@@ -181,7 +172,7 @@ namespace Sparse.Librarian
             satBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
             monBtn.BorderColor = tueBtn.BorderColor = wedBtn.BorderColor = thuBtn.BorderColor = friBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#f2f2f2");
 
-            GetChartData("SAT");
+            GetChartData("7");
         }
     }
 }
