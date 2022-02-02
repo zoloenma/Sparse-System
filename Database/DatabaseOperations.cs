@@ -61,9 +61,10 @@ namespace Sparse.Database
 
             float occupancy = GetCurrentRoomOccupancy();
 
-            DateTime time = DateTime.Now;
+            //DateTime time = DateTime.Now;
             //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy open
             //DateTime time = new DateTime(2022, 01, 28, 22, 10, 20); //dummy closed
+            DateTime time = GetCurrentDateTime();
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
@@ -114,6 +115,21 @@ namespace Sparse.Database
             }
 
             return statusColor;
+        }
+
+        public DateTime GetCurrentDateTime()
+        {
+            DateTime currentDateTime = DateTime.Now;
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT CONVERT(datetime, SWITCHOFFSET(GETDATE(), DATEPART(TZOFFSET, GETDATE() AT TIME ZONE 'Singapore Standard Time')))", con);
+                currentDateTime = DateTime.Parse(cmd.ExecuteScalar().ToString());
+            }
+
+            return currentDateTime;
         }
     }
 }
