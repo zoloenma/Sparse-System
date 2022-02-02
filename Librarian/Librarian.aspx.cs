@@ -26,34 +26,43 @@ namespace Sparse.Librarian
             WarningAlert.Visible = false;
 
             DateTime time = DateTime.Now;
-            //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
+            //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy open
+            //DateTime time = new DateTime(2022, 01, 28, 22, 10, 20); //dummy closed
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
+                //Room Occupancy Percentage
                 float occupancy = databaseOperations.GetCurrentRoomOccupancy();
                 CurrentRoomOccupancyLbl.Text = occupancy.ToString() + "%";
 
+                //Warning alert
                 if (IsEffectiveCapacityExceeded(occupancy)) WarningAlert.Visible = true;
             }
 
+            //Room Occupancy Status
             string status = databaseOperations.GetCurrentStatus();
             RoomStatusLbl.Text = status;
 
+            //Room Occupancy Status Color
             string statusColor = databaseOperations.GetCurrentStatusColor();
             RoomStatusLbl.Attributes.Add("class", statusColor + " px-6 py-2 rounded-full ml-4 text-2xl");
 
+            //Effective Capacity Count
             string capacity = databaseOperations.GetEffectiveCapacity().ToString();
             EffectiveCapacityLbl.Text = capacity;
 
+            //Room Occupancy for Past Hour Table
             //HistoryTable.DataSource = databaseOperations.GetHistoryforPastHour();
             //HistoryTable.DataBind();
             GetHistory();
 
+            //Average Room Occupancy Chart
             GetChartData("2");
             monBtn.BorderColor = System.Drawing.ColorTranslator.FromHtml("#657A8C");
 
+            //User Email
             //dummy email
-            emailLbl.Text = "librarian@mcl.edu.ph";
+            emailLbl.Text = "lib@email.com";
         }
 
         public bool IsEffectiveCapacityExceeded(float occupancy)
@@ -84,7 +93,7 @@ namespace Sparse.Librarian
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("select [Room Occupancy] as Occupancy, [Timestamp] as [Time] from RoomOccupancy where [Timestamp] >= DATEADD(HOUR, -1, GETDATE()) and [Timestamp] <= GETDATE() order by [Timestamp] desc", con);
+                SqlCommand cmd = new SqlCommand("select [Room Occupancy]*100 as [Occupancy], [Timestamp] as [Time] from [RoomOccupancy] where [Timestamp] >= DATEADD(HOUR, -1, (SELECT CONVERT(datetime, SWITCHOFFSET(GETDATE(), DATEPART(TZOFFSET, GETDATE() AT TIME ZONE 'Singapore Standard Time'))))) and [Timestamp] <= (SELECT CONVERT(datetime, SWITCHOFFSET(GETDATE(), DATEPART(TZOFFSET, GETDATE() AT TIME ZONE 'Singapore Standard Time')))) order by [Timestamp] desc", con);
                 HistoryTable.DataSource = cmd.ExecuteReader();
                 HistoryTable.DataBind();
             }

@@ -47,6 +47,10 @@
                         <p class="text-center text-xl"><b>Warning:</b> Effective Capacity Exceeded</p>
                     </div>
 
+                    <div class="mt-9">
+                        <h1 class="text-2xl">Center for Learning and Information Resources - Einstein bldg.</h1>
+                    </div>
+
                     <!-- Room Occupancy & Effective Capacity -->
                     <div class="bg-custom-lightgray border border-custom-darkblue px-12 py-6 rounded mt-9 flex flex-col sm:flex-row justify-between">
                         <div class="flex flex-col">
@@ -117,7 +121,7 @@
                                             <tr class="h-10 border-b border-custom-darkgray text-center">
                                                 <td><%#DataBinder.Eval(Container,"DataItem.Time", "{0:hh:mm tt}")%></td>
                                                 <td>
-                                                    <%#String.Format("{0}%", (Convert.ToDouble(DataBinder.Eval(Container,"DataItem.Occupancy")) * 100).ToString("0.##")) %>
+                                                    <%#String.Format("{0}%", (Convert.ToDouble(DataBinder.Eval(Container,"DataItem.Occupancy"))).ToString("0.##")) %>
                                                 </td>
                                                 <!-- bar
                                                 <td class="flex flex-row">
