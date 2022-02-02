@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="md:col-span-5 text-center">
                                         <div>
-                                            <p class="md:text-4xl text-lg mt-3 text-black py-6">Center of Learning and Information Resources</p>
+                                            <p class="md:text-4xl text-lg mt-3 text-black py-6">Center for Learning and Information Resources</p>
                                         </div>
                                     </div>
                                     <div class="md:col-span-1"></div>

@@ -14,8 +14,8 @@ namespace Sparse.Student
 
             DatabaseOperations databaseOperations = new DatabaseOperations();
 
-            //DateTime time = DateTime.Now; 
-            DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
+            DateTime time = DateTime.Now; 
+            //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {

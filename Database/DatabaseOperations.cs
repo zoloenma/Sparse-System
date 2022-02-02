@@ -61,8 +61,9 @@ namespace Sparse.Database
 
             float occupancy = GetCurrentRoomOccupancy();
 
-            DateTime time = DateTime.Now; 
-            //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy
+            DateTime time = DateTime.Now;
+            //DateTime time = new DateTime(2022, 01, 28, 11, 10, 20); //dummy open
+            //DateTime time = new DateTime(2022, 01, 28, 22, 10, 20); //dummy closed
 
             if (time.TimeOfDay >= new TimeSpan(7, 00, 00) && time.TimeOfDay <= new TimeSpan(20, 00, 00))
             {
