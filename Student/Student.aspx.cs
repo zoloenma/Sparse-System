@@ -43,6 +43,33 @@ namespace Sparse.Student
             string statusColor = databaseOperations.GetCurrentStatusColor();
             string statusCss = "inline-flex " + statusColor + " text-black rounded-full h-24 w-40 md:text-3xl justify-center items-center";
             RoomStatus.Attributes.Add("class", statusCss);
+
+            // ---------- HCI Portion ----------
+            if (RoomStatus.Text == "EMPTY" || RoomStatus.Text == "NOT BUSY")
+            {
+                statusHCI_1.Text = "We have room for everyone!";
+                statusHCI_2.Text = "Many seats are available as of the moment, feel free to come in!";
+                statusContainer.Style.Add("background-color", "#95e6a0");
+            }
+            else if (RoomStatus.Text == "NORMAL")
+            {
+                statusHCI_1.Text = "Some seats are available!";
+                statusHCI_2.Text = "The room capacity is normal, come and take a seat!";
+                statusContainer.Style.Add("background-color", "#ededa1");
+            }
+            else if (RoomStatus.Text == "BUSY")
+            {
+                statusHCI_1.Text = "The room is pretty crowdy!";
+                statusHCI_2.Text = "Take precaution, there are only few seats available as of the moment!";
+                statusContainer.Style.Add("background-color", "#db8b4d");
+            }
+            else
+            {
+                statusHCI_1.Text = "No more seats available!";
+                statusHCI_2.Text = "The room is currently packed! Please wait for others to leave the premises.";
+                statusContainer.Style.Add("background-color", "#bf5252");
+            }
+            // ---------- End of HCI Portion ----------
         }
     }
 }

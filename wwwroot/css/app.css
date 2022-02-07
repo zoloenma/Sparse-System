@@ -928,11 +928,11 @@ video {
 	padding-left: 3rem;
 	padding-right: 3rem;
 }
-.pt-3{
-	padding-top: 0.75rem;
-}
 .pt-6{
 	padding-top: 1.5rem;
+}
+.pt-3{
+	padding-top: 0.75rem;
 }
 .pb-3{
 	padding-bottom: 0.75rem;
@@ -1106,14 +1106,14 @@ video {
 		padding: 2rem;
 	}
 
-	.md\:text-5xl{
-		font-size: 3rem;
-		line-height: 1;
-	}
-
 	.md\:text-4xl{
 		font-size: 2.25rem;
 		line-height: 2.5rem;
+	}
+
+	.md\:text-5xl{
+		font-size: 3rem;
+		line-height: 1;
 	}
 
 	.md\:text-3xl{
