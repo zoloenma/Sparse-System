@@ -41,12 +41,12 @@ namespace Sparse.Database
         public float GetCurrentRoomOccupancy()
         {
             float roomOccupancy = 0;
-            
+
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("select [Room Occupancy] from RoomOccupancy where ID=(select max(ID) from RoomOccupancy)", con);
+                SqlCommand cmd = new SqlCommand("select [Room Occupancy Percentage] from RoomOccupancy where ID=(select max(ID) from RoomOccupancy)", con);
                 roomOccupancy = float.Parse(cmd.ExecuteScalar().ToString());
             }
 
@@ -130,6 +130,141 @@ namespace Sparse.Database
             }
 
             return currentDateTime;
+        }
+
+        public int[] GetPeakHours()
+        {
+            List<int> PeakHoursList = new List<int>();
+            int[] PeakHours;
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT TOP 4 DATEPART(HOUR, [Timestamp]) FROM [dbo].[RoomOccupancy] WHERE [Room Occupancy Percentage] > 0.60 AND [Timestamp] > (SELECT DATEADD(WEEK, -1, GETDATE())) ORDER BY [Room Occupancy Percentage] DESC;", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PeakHoursList.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+
+            PeakHours = PeakHoursList.ToArray();
+            return PeakHours;
+        }
+
+        public decimal GetAverageCrowded()
+        {
+            decimal average = 0;
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT AVG([Room Occupancy Count]) FROM [dbo].[RoomOccupancy] WHERE [Timestamp] > (SELECT DATEADD(DAY, -1, GETDATE()));", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        average = reader.GetDecimal(0);
+                    }
+                }
+            }
+
+            return average;
+        }
+
+        public string GetOpeningTime()
+        {
+            string openingTime = "";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT [OpeningHour] FROM [dbo].[CLIRSchedule]", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        openingTime = reader.GetString(0);
+                    }
+                }
+            }
+
+            return openingTime;
+        }
+
+        public string GetClosingTime()
+        {
+            string closingTime = "";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT [ClosingHour] FROM [dbo].[CLIRSchedule]", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        closingTime = reader.GetString(0);
+                    }
+                }
+            }
+
+            return closingTime;
+        }
+
+        public string GetOpeningDay()
+        {
+            string openingDay = "";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT [OpeningDay] FROM [dbo].[CLIRSchedule]", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        openingDay = reader.GetString(0);
+                    }
+                }
+            }
+
+            return openingDay;
+        }
+
+        public string GetClosingDay()
+        {
+            string closingDay = "";
+
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT [ClosingDay] FROM [dbo].[CLIRSchedule]", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        closingDay = reader.GetString(0);
+                    }
+                }
+            }
+
+            return closingDay;
         }
     }
 }
