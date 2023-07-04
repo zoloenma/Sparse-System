@@ -1,4 +1,5 @@
 # Sparse-System
 
 Model Link: https://github.com/zoloenma/Sparse-Computer-Vision-Model
-Update head
+
+Conference Paper Link: https://rsucon.rsu.ac.th/proceeding/article/3054
